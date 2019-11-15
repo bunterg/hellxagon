@@ -49,8 +49,8 @@ public class MapCreator
 
         // Set the path as within the Assets folder,
         // and name it as the GameObject's name with the .Prefab format
-        string localPath = "Assets/Prefabs/Maps/" + map.name + ".prefab";
-        string stagePath = "Assets/Prefabs/Stages/" + map.name + ".asset";
+        string localPath = "Assets/Resources/Prefabs/Maps/" + map.name + ".prefab";
+        string stagePath = "Assets/Resources/Prefabs/Stages/" + map.name + ".asset";
 
         // Make sure the file name is unique, in case an existing Prefab has the same name.
         localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);

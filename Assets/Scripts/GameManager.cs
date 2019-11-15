@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
@@ -14,9 +15,21 @@ public class GameManager : MonoBehaviour
     private Tilemap SpawnLayer;
     private Tilemap HighlightLayer;
 
+    void Awake()
+    {
+        GameObject app = GameObject.Find("__app");
+        if (app == null)
+        {
+            SceneManager.LoadScene("_preload", LoadSceneMode.Additive);
+        } else
+        {
+            stage = app.GetComponent<GameConfig>().stage;
+        }
 
-    // Start is called before the first frame update
-    void Start()
+    }
+
+// Start is called before the first frame update
+void Start()
     {
         GameObject map = Instantiate(stage.MapPrefab);
         Tilemap[] tilemaps = map.transform.GetComponentsInChildren<Tilemap>();
