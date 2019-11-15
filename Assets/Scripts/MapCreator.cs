@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
-public class Stage
+public class MapCreator
 {
     private class Layer {
         public int sortingOrder { get; set; }
@@ -18,7 +18,7 @@ public class Stage
         }
     }
 
-    [MenuItem("Game Dev/Create Map")]
+    [MenuItem("Game Dev/Create Map and Stage")]
     static void CreatePrefab()
     {
         Layer[] layers = new Layer[4]{
@@ -50,14 +50,27 @@ public class Stage
         // Set the path as within the Assets folder,
         // and name it as the GameObject's name with the .Prefab format
         string localPath = "Assets/Prefabs/Maps/" + map.name + ".prefab";
+        string stagePath = "Assets/Prefabs/Stages/" + map.name + ".asset";
 
         // Make sure the file name is unique, in case an existing Prefab has the same name.
         localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+        stagePath = AssetDatabase.GenerateUniqueAssetPath(stagePath);
 
         // Create the new Prefab.
         PrefabUtility.SaveAsPrefabAssetAndConnect(map, localPath, InteractionMode.UserAction);
-
         Object.DestroyImmediate(map);
+
+        // Create new stage scriptable object
+        Stage stage = ScriptableObject.CreateInstance<Stage>();
+        stage.MapPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(localPath);
+
+        AssetDatabase.CreateAsset(stage, stagePath);
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        EditorUtility.FocusProjectWindow();
+        Selection.activeObject = stage;
+
     }
 
 }

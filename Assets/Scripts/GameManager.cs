@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject MapPrefab;
+    public Stage stage;
     public SpawnManager spawnManager;
     public TileSelector tileSelector;
     private Tilemap LowerLayer;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject map = Instantiate(MapPrefab);
+        GameObject map = Instantiate(stage.MapPrefab);
         Tilemap[] tilemaps = map.transform.GetComponentsInChildren<Tilemap>();
 
         foreach (Tilemap tilemap in tilemaps)

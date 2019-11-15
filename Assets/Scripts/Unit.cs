@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(fileName = "new Unit", menuName = "ScriptableObjects/unit", order = 1)]
+[CreateAssetMenu(fileName = "new Unit", menuName = "ScriptableObjects/Unit", order = 1)]
 public class Unit : ScriptableObject
 {
     public int ID;
