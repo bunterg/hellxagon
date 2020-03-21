@@ -11,9 +11,8 @@ public class TileToSuperTile
     [MenuItem("Assets/Game Dev/Transform Tile")]
     static void CreatePrefab()
     {
-        SuperTile superTile = ScriptableObject.CreateInstance<SuperTile>();
+        SuperTile superTile = new SuperTile();
         Texture2D texture = (Texture2D)Selection.activeObject;
-        //superTile.sprite = Sprite.Create(image, new Rect(0f, 0f, image.width, image.height), Vector2.zero);
         superTile.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
         string path = "Assets/Resources/Sprites/tool/" + Selection.activeObject.name + ".asset";
         path = AssetDatabase.GenerateUniqueAssetPath(path);
