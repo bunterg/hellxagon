@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         GameObject map = Instantiate(stage.MapPrefab);
         Tilemap[] tilemaps = map.transform.GetComponentsInChildren<Tilemap>();
@@ -62,9 +62,4 @@ void Start()
         tileSelector.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

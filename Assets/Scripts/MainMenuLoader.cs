@@ -34,13 +34,13 @@ public class MainMenuLoader : MonoBehaviour
             StageListItem stageListItem = Instantiate(stageListItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             stageListItem.stage = stage;
             stageListItem.transform.SetParent(stageList);
-            stageListItem.GetComponent<Button>().onClick.AddListener(() => { changeSelectedStage(stage); }) ;
+            stageListItem.GetComponent<Button>().onClick.AddListener(() => { ChangeSelectedStage(stage); }) ;
         }
     }
 
-    void changeSelectedStage(Stage stage)
+    void ChangeSelectedStage(Stage stage)
     {
-        stageDisplay.setStage(stage);
+        stageDisplay.SetStage(stage);
         gameConfig.stage = stage;
         Debug.Log(gameConfig.stage);
     }

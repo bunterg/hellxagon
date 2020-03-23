@@ -17,7 +17,7 @@ public class StageDisplay : MonoBehaviour
         previewImage.sprite = stage.Preview;
     }
 
-    public void setStage(Stage stage)
+    public void SetStage(Stage stage)
     {
         this.stage = stage;
         title.text = stage.name;
